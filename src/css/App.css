@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+#root {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.game-title {
+  margin: 50px;
+  font-size: 50px;
+}
+.read-the-docs {
+  color: #888;
+}
+
+.cards {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
