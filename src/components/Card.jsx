@@ -2,8 +2,14 @@ import "../css/Card.css";
 const Card = (props) => {
   return (
     <>
-      <div className="card" id={props.id} onClick={props.onClick}>
-        <img className="card-img" src={props.url} alt={props.name} />
+      <div className="card">
+        <img
+          className="card-img"
+          src={props.url}
+          alt={props.name}
+          onClick={props.onClick}
+          id={props.id}
+        />
         <div className="catName">{props.name}</div>
       </div>
     </>
