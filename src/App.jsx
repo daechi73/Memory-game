@@ -4,10 +4,8 @@ import Card from "./components/Card";
 
 function App() {
   const [score, setScore] = useState(0);
-  const [customCatDataList, setCatData] = useState();
-  const handleClick = () => {
-    console.log("working");
-  };
+  const [customCatDataList, setCatDataList] = useState();
+
   useEffect(() => {
     const getCats = (async () => {
       const response = await fetch(
@@ -24,26 +22,37 @@ function App() {
           selected: false,
         });
       });
-      catDataList = catDataList.map((catData) => {
-        return (
-          <Card
-            url={catData.url}
-            name={catData.name}
-            key={catData.id}
-            onClick={handleClick}
-            selected={catData.selected}
-          />
-        );
-      });
-      setCatData(catDataList);
+      setCatDataList(catDataList);
     })();
   }, []);
-  // console.log(customCatDataList);
-  // console.log("hello");
+  const handleClick = (e) => {
+    const ja = customCatDataList.find((ele) => {
+      return ele.id === e.target.id;
+    });
+    ja.selected = true;
+
+    console.log(customCatDataList);
+  };
+
   return (
     <>
       <header className="game-title">Memory Game</header>
-      <div className="cards">{customCatDataList}</div>
+      <div className="cards">
+        {customCatDataList
+          ? customCatDataList.map((catData) => {
+              return (
+                <Card
+                  url={catData.url}
+                  name={catData.name}
+                  key={catData.id}
+                  id={catData.id}
+                  onClick={handleClick}
+                  selected={catData.selected}
+                />
+              );
+            })
+          : ""}
+      </div>
     </>
   );
 }
