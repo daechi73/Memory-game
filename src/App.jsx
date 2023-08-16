@@ -26,14 +26,14 @@ function App() {
     })();
   }, []);
   const handleClick = (e) => {
-    const ja = customCatDataList.find((ele) => {
-      return ele.id === e.target.id;
+    const nextCustomCatList = customCatDataList.map((customCatData) => {
+      if (customCatData.id === e.target.id) {
+        return { ...customCatData, selected: true };
+      } else return customCatData;
     });
-    ja.selected = true;
-
-    console.log(customCatDataList);
+    setCatDataList(nextCustomCatList);
   };
-
+  console.log(customCatDataList);
   return (
     <>
       <header className="game-title">Memory Game</header>
