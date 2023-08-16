@@ -25,15 +25,22 @@ function App() {
       setCatDataList(catDataList);
     })();
   }, []);
+  const shuffleCatList = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
   const handleClick = (e) => {
     const nextCustomCatList = customCatDataList.map((customCatData) => {
       if (customCatData.id === e.target.id) {
         return { ...customCatData, selected: true };
       } else return customCatData;
     });
+    shuffleCatList(nextCustomCatList);
     setCatDataList(nextCustomCatList);
   };
-  console.log(customCatDataList);
+
   return (
     <>
       <header className="game-title">Memory Game</header>
