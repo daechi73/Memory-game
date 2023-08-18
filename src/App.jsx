@@ -25,18 +25,39 @@ function App() {
       setCatDataList(catDataList);
     })();
   }, []);
+
   const shuffleCatList = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   };
+
+  const resetSelectedAndScore = (array) => {
+    const resetArray = array.map((customCatData) => {
+      return { ...customCatData, selected: false };
+    });
+    setScore(0);
+  };
+
   const handleClick = (e) => {
+    let resetSelectedPass = false;
     const nextCustomCatList = customCatDataList.map((customCatData) => {
       if (customCatData.id === e.target.id) {
-        return { ...customCatData, selected: true };
-      } else return customCatData;
+        if (customCatData.selected) {
+          //add score reset and selected reset here
+
+          resetSelectedPass = true;
+          return { ...customCatData, selected: false };
+        } else {
+          setScore(score + 1);
+          return { ...customCatData, selected: true };
+        }
+      } else {
+        return customCatData;
+      }
     });
+    if (resetSelectedPass) resetSelectedAndScore(nextCustomCatList);
     shuffleCatList(nextCustomCatList);
     setCatDataList(nextCustomCatList);
   };
@@ -44,6 +65,7 @@ function App() {
   return (
     <>
       <header className="game-title">Memory Game</header>
+      <section className="scoreBoard">{score}</section>
       <div className="cards">
         {customCatDataList
           ? customCatDataList.map((catData) => {
