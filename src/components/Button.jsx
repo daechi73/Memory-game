@@ -3,6 +3,10 @@ const Button = (props) => {
     props.setGameStart(true);
     props.audio.play();
   };
-  return <button onClick={handleStartBtnClick}>Start Game</button>;
+  return (
+    <button className="startBtn" onClick={handleStartBtnClick}>
+      Start Game
+    </button>
+  );
 };
 export default Button;
