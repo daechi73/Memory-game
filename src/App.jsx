@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import "./css/App.css";
 import Card from "./components/Card";
+import CatMusic from "./assets/catMusic.mp3";
+import Button from "./components/Button";
 
 function App() {
+  const [gameStart, setGameStart] = useState(false);
   const [score, setScore] = useState(0);
   const [customCatDataList, setCatDataList] = useState();
-
+  const backgroundMusic = new Audio(CatMusic);
+  backgroundMusic.currentTime = 4;
+  backgroundMusic.volume = 0.3;
   useEffect(() => {
     const getCats = (async () => {
       const response = await fetch(
@@ -59,15 +64,17 @@ function App() {
     });
     if (resetSelectedPass)
       nextCustomCatList = resetSelectedAndScore(nextCustomCatList);
-    console.log(nextCustomCatList);
     shuffleCatList(nextCustomCatList);
     setCatDataList(nextCustomCatList);
   };
 
   return (
     <>
+      <section className={gameStart ? "startMenu-hidden" : "startMenu-show"}>
+        <Button setGameStart={setGameStart} audio={backgroundMusic} />
+      </section>
       <header className="game-title">Memory Game</header>
-      <section className="scoreBoard">{score}</section>
+      <section className="scoreBoard">Score: {score}</section>
       <div className="cards">
         {customCatDataList
           ? customCatDataList.map((catData) => {
