@@ -38,15 +38,15 @@ function App() {
       return { ...customCatData, selected: false };
     });
     setScore(0);
+    return resetArray;
   };
 
   const handleClick = (e) => {
     let resetSelectedPass = false;
-    const nextCustomCatList = customCatDataList.map((customCatData) => {
+    let nextCustomCatList = customCatDataList.map((customCatData) => {
       if (customCatData.id === e.target.id) {
         if (customCatData.selected) {
           //add score reset and selected reset here
-
           resetSelectedPass = true;
           return { ...customCatData, selected: false };
         } else {
@@ -57,7 +57,9 @@ function App() {
         return customCatData;
       }
     });
-    if (resetSelectedPass) resetSelectedAndScore(nextCustomCatList);
+    if (resetSelectedPass)
+      nextCustomCatList = resetSelectedAndScore(nextCustomCatList);
+    console.log(nextCustomCatList);
     shuffleCatList(nextCustomCatList);
     setCatDataList(nextCustomCatList);
   };
