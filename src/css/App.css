@@ -17,11 +17,35 @@ body {
 .read-the-docs {
   color: #888;
 }
-
+.scoreBoard {
+  margin-bottom: 40px;
+}
 .cards {
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+.startBtn {
+  width: 7%;
+  font-size: 15px;
+}
+.startMenu-show {
+  align-items: center;
+  top: 0;
+  height: 200%;
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(66, 28, 28);
+  font-size: 30px;
+}
+.startMenu-hidden {
+  display: none;
+}
+.startMenu-title {
+  margin-top: 250px;
 }
