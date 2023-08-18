@@ -71,6 +71,10 @@ function App() {
   return (
     <>
       <section className={gameStart ? "startMenu-hidden" : "startMenu-show"}>
+        <div className="startMenu-title">Memory Game</div>
+        <summary className="startMenu-summary">
+          Win scores by consecutively picking unselected cards!
+        </summary>
         <Button setGameStart={setGameStart} audio={backgroundMusic} />
       </section>
       <header className="game-title">Memory Game</header>
