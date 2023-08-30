@@ -86,22 +86,26 @@ function App() {
         <section className="score">Score: {score}</section>
         <section className="bestScore">Best Score: {bestScore}</section>
       </section>
-      <div className="cards">
-        {customCatDataList
-          ? customCatDataList.map((catData) => {
-              return (
-                <Card
-                  url={catData.url}
-                  name={catData.name}
-                  key={catData.id}
-                  id={catData.id}
-                  onClick={handleClick}
-                  selected={catData.selected}
-                />
-              );
-            })
-          : ""}
-      </div>
+      {gameStart ? (
+        <div className="cards">
+          {customCatDataList
+            ? customCatDataList.map((catData) => {
+                return (
+                  <Card
+                    url={catData.url}
+                    name={catData.name}
+                    key={catData.id}
+                    id={catData.id}
+                    onClick={handleClick}
+                    selected={catData.selected}
+                  />
+                );
+              })
+            : ""}
+        </div>
+      ) : (
+        <div></div>
+      )}
     </>
   );
 }
