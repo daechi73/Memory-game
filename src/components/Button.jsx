@@ -1,3 +1,5 @@
+import "../css/Button.css";
+
 const Button = (props) => {
   const handleStartBtnClick = () => {
     props.setGameStart(true);
