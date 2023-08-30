@@ -9,7 +9,8 @@
   border: solid;
   border-width: 3px;
   border-color: rgb(150, 187, 87);
-  transform: scaleX(-1);
+  animation-name: flip-with-rotate;
+  animation-duration: 2s;
 }
 
 @keyframes flip-with-scale {
@@ -19,5 +20,15 @@
 
   100% {
     transform: perspective(400px) scaleX(-1);
+  }
+}
+
+@keyframes flip-with-rotate {
+  0% {
+    transform: perspective(400px) rotateY(0);
+  }
+
+  100% {
+    transform: perspective(400px) rotateY(180deg);
   }
 }
