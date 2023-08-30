@@ -1,3 +1,6 @@
+:root {
+  font: 18px;
+}
 html,
 body {
   margin: 0;
@@ -27,10 +30,7 @@ body {
   gap: 10px;
   justify-content: center;
 }
-.startBtn {
-  width: 7%;
-  font-size: 15px;
-}
+
 .startMenu-show {
   align-items: center;
   top: 0;
