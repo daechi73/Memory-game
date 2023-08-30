@@ -6,4 +6,7 @@
   width: 250px;
   height: 200px;
   border-radius: 8px;
+  border: solid;
+  border-width: 3px;
+  border-color: rgb(169, 201, 109);
 }
