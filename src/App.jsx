@@ -7,10 +7,11 @@ import Button from "./components/Button";
 function App() {
   const [gameStart, setGameStart] = useState(false);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [customCatDataList, setCatDataList] = useState();
   const backgroundMusic = new Audio(CatMusic);
   backgroundMusic.currentTime = 4;
-  backgroundMusic.volume = 0.3;
+  backgroundMusic.volume = 0;
   useEffect(() => {
     const getCats = (async () => {
       const response = await fetch(
@@ -55,7 +56,9 @@ function App() {
           resetSelectedPass = true;
           return { ...customCatData, selected: false };
         } else {
-          setScore(score + 1);
+          const newScore = score + 1;
+          setScore(newScore);
+          if (newScore > bestScore) setBestScore(newScore);
           return { ...customCatData, selected: true };
         }
       } else {
@@ -78,7 +81,11 @@ function App() {
         <Button setGameStart={setGameStart} audio={backgroundMusic} />
       </section>
       <header className="game-title">Memory Game</header>
-      <section className="scoreBoard">Score: {score}</section>
+
+      <section className="scoreBoard">
+        <section className="score">Score: {score}</section>
+        <section className="bestScore">Best Score: {bestScore}</section>
+      </section>
       <div className="cards">
         {customCatDataList
           ? customCatDataList.map((catData) => {
