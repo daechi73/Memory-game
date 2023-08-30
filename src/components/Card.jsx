@@ -10,7 +10,7 @@ const Card = (props) => {
           onClick={props.onClick}
           id={props.id}
         />
-        <div className="catName">{props.name}</div>
+        <div className="catName"></div>
       </div>
     </>
   );
