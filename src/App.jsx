@@ -11,7 +11,7 @@ function App() {
   const [customCatDataList, setCatDataList] = useState();
   const backgroundMusic = new Audio(CatMusic);
   backgroundMusic.currentTime = 4;
-  backgroundMusic.volume = 0;
+  backgroundMusic.volume = 0.2;
   useEffect(() => {
     const getCats = (async () => {
       const response = await fetch(
